@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="snap/gui/icon.svg" alt="Project" style="height: 256px">
+  <img src="snap/gui/icon.png" alt="Project">
   <br />
   Git Cola
 </h1>
