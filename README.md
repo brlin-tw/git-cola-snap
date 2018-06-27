@@ -1,11 +1,10 @@
 <h1 align="center">
-  <img src="snap/gui/icon.png" alt="Project">
+  <img src="snap/gui/icon.svg" alt="Project" style="height: 256px">
   <br />
-  [Project]
+  Git Cola
 </h1>
 
-<p align="center"><b>This is the snap for [Project]</b>, <i>"Single-line elevator pitch for your amazing snap"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
-distributions.</p>
+<p align="center"><b>This is the snap for Git Cola</b>, <i>"The highly caffeinated Git GUI"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.</p>
 
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
@@ -14,31 +13,28 @@ distributions.</p>
 -->
 
 <!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](/home/%E6%9E%97%E5%8D%9A%E4%BB%81/%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%96%93/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B0%88%E6%A1%88/Snapcrafters%20template.%20Fork%20to%20your%20GitHub%20account%20and%20rename%20it%20for%20the%20snap%20you%27re%20creating/screenshot.png "my-snap-name")
+![Screenshot of the Snapped Git Cola](snap/screenshots/screenshot.png "Screenshot of the Snapped Git Cola")
 -->
 
 <p align="center">Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
-## Install
+## Installation (not yet available)
 
-    sudo snap install my-snap-name
+    sudo snap install --channel=edge --devmode git-cola-brlin
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
 ## Remaining Tasks
 
-Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) 
-are working to land snap install documentation and
-the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml)
-upstream so [Project] can authoritatively publish future releases.
+Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) are working to land snap install documentation and the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml) upstream so that Git Cola can authoritatively publish future releases.
 
   - [x] Fork the [Snapcrafters template](https://github.com/snapcrafters/fork-and-rename-me) repository to your own GitHub account.
     - If you have already forked the Snapcrafter template to your account and want to create another snap, you'll need to use GitHub's [Import repository](https://github.com/new/import) feature because you can only fork a repository once.
-  - [ ] Rename the forked Snapcrafters template repository
-  - [ ] Update the description of the repository
-  - [ ] Update logos and references to `[Project]` and `[my-snap-name]`
+  - [x] Rename the forked Snapcrafters template repository
+  - [x] Update the description of the repository
+  - [x] Update logos and references to `[Project]` and `[my-snap-name]`
   - [ ] Create a snap that runs in `devmode`
-  - [ ] Register the snap in the store, **using the preferred upstream name**
+  - [ ] (SKIPPED, upstream name reserved) Register the snap in the store, **using the preferred upstream name**
   - [ ] Add a screenshot to this `README.md`
   - [ ] Publish the `devmode` snap in the Snap store edge channel
   - [ ] Add install instructions to this `README.md`
@@ -62,18 +58,15 @@ upstream so [Project] can authoritatively publish future releases.
 
 If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft.io).
 
-<!-- 
+
 ## The Snapcrafters
 
-| [![Your Name](http://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/yourname/) |
-| :---: |
-| [Your Name](https://github.com/yourname/) |
---> 
+| [![林博仁(Buo-ren, Lin)'s Avatar](https://www.gravatar.com/avatar/66a5b84972e73e895d5d68d48b1e1e21?size=128)](https://github.com/Lin-Buo-Ren/) |
+| :----------------------------------------------------------: |
+|   [林博仁<br>Buo-ren, Lin](https://Lin-Buo-Ren.github.io)    |
 
-<!-- Uncomment and modify this when you have upstream contacts
 ## Upstream
 
-| [![Upstream Name](http://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](https://github.com/upstreamname) |
-| :---: |
-| [Upstream Name](https://github.com/upstreamname) |
--->
+| [<img src='https://www.gravatar.com/avatar/6b12b00e4f75ce5d85434cec28de4078?size=128' />](https://github.com/davvid) |
+| :----------------------------------------------------------: |
+|          [David Aguilar](https://github.com/davvid)          |
