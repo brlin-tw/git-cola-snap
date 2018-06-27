@@ -32,16 +32,29 @@ grade: devel
 icon: snap/gui/icon.png
 
 apps:
-  my-app:
-    command: my-app
-    desktop: share/applications/my-app.desktop
-    #plugs:
-    #- desktop
-    #- desktop-legacy
-    #- x11
-    #- unity7
+  git-cola:
+    command: desktop-launch git cola
+    desktop: share/applications/git-cola.desktop
+    plugs:
+    - desktop
+    - desktop-legacy
+    - x11
+    - unity7
 
-    #slots:
+    - home
+    - removable-media
+
+  git-dag:
+    command: desktop-launch git dag
+    desktop: share/applications/git-dag.desktop
+    plugs:
+    - desktop
+    - desktop-legacy
+    - x11
+    - unity7
+
+    - home
+    - removable-media
 
 parts:
   # Patches to fix other parts
