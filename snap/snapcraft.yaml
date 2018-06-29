@@ -29,7 +29,7 @@ summary: The highly caffeinated Git GUI
 description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
 
-confinement: devmode
+confinement: strict
 grade: devel
 icon: snap/gui/icon.png
 
