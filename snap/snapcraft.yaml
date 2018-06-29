@@ -35,7 +35,9 @@ icon: snap/gui/icon.png
 
 apps:
   git-cola:
-    command: desktop-launch git cola
+    command: >
+      desktop-launch
+      git cola
     desktop: share/applications/git-cola.desktop
     plugs:
     - desktop
@@ -45,6 +47,12 @@ apps:
 
     - home
     - removable-media
+
+    # SSH remote support
+    - ssh-keys
+
+    # For signing commits and tags
+    - gpg-keys
 
   git-dag:
     command: desktop-launch git dag
@@ -57,6 +65,27 @@ apps:
 
     - home
     - removable-media
+
+    # For signing commits and tags
+    - gpg-keys
+
+  git-cola-folder-handler:
+    command: desktop-launch git-cola --repo
+    desktop: share/applications/git-cola-folder-handler.desktop
+    plugs:
+    - desktop
+    - desktop-legacy
+    - x11
+    - unity7
+
+    - home
+    - removable-media
+
+    # SSH remote support
+    - ssh-keys
+
+    # For signing commits and tags
+    - gpg-keys
 
 parts:
   # Patches to fix other parts
@@ -94,18 +123,101 @@ parts:
     python-packages:
     - send2trash
     python-version: python2
-    after:
-    - patches
 
-    # See 'snapcraft plugins'
-    plugin: nil
+  git-cola:
+    after:
+    - desktop-qt5
+    - patches
+    - send2trash
+
+    build-packages:
+    - gettext
+    - make
+
+    - python
+    - python-pyqt5
+    - python-sphinx
+
+    # REPLACED: Git Cola crashed when using Python 3
+    # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
+    # https://github.com/git-cola/git-cola/issues/849
+    #- python3
+    #- python3-pyqt5
+    #- python3-sphinx
+    stage-packages:
+    # REPLACED: by send2trash part
+    #- python3-send2trash
+
+    - git-core
+    - libdb5.3
+
+    - python
+    - python-pyqt5
+
+    # REPLACED: Git Cola crashed when using Python 3
+    # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
+    # https://github.com/git-cola/git-cola/issues/849
+    #- python3
+    #- python3-pyqt5
+
+    source: git://github.com/git-cola/git-cola.git
+    source-depth: 200
+
+    plugin: make
+    make-parameters:
+    - DESTDIR=$SNAPCRAFT_PART_INSTALL
+    - prefix=
+    - install-doc
+    organize:
+      # distutils(?) installs partial files under local when prefix is set to _null_string_
+      local/: /
+    filesets:
+      additional-executables:
+      - share/git-cola/bin/*
+      appdata:
+      - share/appdata/*
+      desktop-entries:
+      - share/applications/*
+      documentation:
+      - share/doc/git-cola/*
+      executables:
+      - bin/*
+      icons:
+      - share/git-cola/icons/*
+      libraries:
+      - share/git-cola/lib/*
+      localization:
+      - share/locale/*
 
     override-stage: |
       set -eu
 
       snapcraftctl stage
 
+      # Patch desktop entries
       sed \
         --file "${SNAPCRAFT_STAGE}"/patches/patch-desktop-entries.sed \
         --in-place \
         "${SNAPCRAFT_STAGE}"/share/applications/*.desktop
+
+      # Patch executable shebangs
+      # https://github.com/git-cola/git-cola/issues/850
+      sed \
+        --file "${SNAPCRAFT_STAGE}"/patches/patch-git-cola-shebang.sed \
+        --in-place \
+        "${SNAPCRAFT_STAGE}"/bin/git-cola \
+        "${SNAPCRAFT_STAGE}"/bin/git-dag
+    override-prime: |
+      set -eu
+
+      snapcraftctl prime
+
+      # REPLACED: Git Cola crashed when using Python 3
+      # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
+      # https://github.com/git-cola/git-cola/issues/849
+      # Set default python intepreter
+      #ln \
+        #--force \
+        #--symbolic \
+        #python3 \
+        #"${SNAPCRAFT_PRIME}"/usr/bin/python
