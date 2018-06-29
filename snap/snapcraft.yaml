@@ -87,7 +87,13 @@ parts:
     - patches/*
     override-prime: 'true'
 
-  my-app:
+  # Ubuntu 16.04 doesn't have python-send2trash
+  send2trash:
+    plugin: python
+    process-dependency-links: false
+    python-packages:
+    - send2trash
+    python-version: python2
     after:
     - patches
 
