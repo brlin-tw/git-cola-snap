@@ -36,6 +36,8 @@ icon: snap/gui/icon.png
 apps:
   git-cola:
     command: >
+      env
+      GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       desktop-launch
       git cola
     desktop: share/applications/git-cola.desktop
@@ -55,7 +57,11 @@ apps:
     - gpg-keys
 
   git-dag:
-    command: desktop-launch git dag
+    command: >
+      env
+      GIT_EXEC_PATH=$SNAP/usr/lib/git-core
+      desktop-launch
+      git dag
     desktop: share/applications/git-dag.desktop
     plugs:
     - desktop
@@ -70,7 +76,11 @@ apps:
     - gpg-keys
 
   git-cola-folder-handler:
-    command: desktop-launch git-cola --repo
+    command: >
+      env
+      GIT_EXEC_PATH=$SNAP/usr/lib/git-core
+      desktop-launch
+      git-cola --repo
     desktop: share/applications/git-cola-folder-handler.desktop
     plugs:
     - desktop
