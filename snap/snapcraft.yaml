@@ -177,11 +177,10 @@ parts:
     plugin: make
     make-parameters:
     - DESTDIR=$SNAPCRAFT_PART_INSTALL
-    - prefix=
+    - prefix=/snap/git-cola-brlin/current
     - install-doc
     organize:
-      # distutils(?) installs partial files under local when prefix is set to _null_string_
-      local/: /
+      snap/git-cola-brlin/current/: /
     filesets:
       additional-executables:
       - share/git-cola/bin/*
