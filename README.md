@@ -12,9 +12,7 @@
 </p>
 -->
 
-<!-- Uncomment and modify this when you have a screenshot
-![Screenshot of the Snapped Git Cola](snap/screenshots/screenshot.png "Screenshot of the Snapped Git Cola")
--->
+![Screenshot of the Snapped Git Cola](snap/screenshots/view-main-amending.png "Screenshot of the Snapped Git Cola")
 
 <p align="center">Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
@@ -35,7 +33,7 @@ Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) ar
   - [x] Update logos and references to `[Project]` and `[my-snap-name]`
   - [x] Create a snap that runs in `devmode`
   - [ ] (SKIPPED, upstream name reserved) Register the snap in the store, **using the preferred upstream name**
-  - [ ] Add a screenshot to this `README.md`
+  - [x] Add a screenshot to this `README.md`
   - [ ] Publish the `devmode` snap in the Snap store edge channel
   - [ ] Add install instructions to this `README.md`
   - [ ] Update snap store metadata, icons and screenshots
