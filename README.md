@@ -12,7 +12,9 @@
 </p>
 -->
 
-![Screenshot of the Snapped Git Cola](snap/screenshots/view-main-amending.png "Screenshot of the Snapped Git Cola")
+<p align="center">
+    <img alt="Screenshot of the Snapped Git Cola" src="snap/screenshots/view-main-amending.png" title="Screenshot of the Snapped Git Cola" />
+</p>
 
 <p align="center">Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
