@@ -37,6 +37,7 @@ apps:
   git-cola:
     command: >
       env
+      GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       desktop-launch
       git cola
@@ -59,6 +60,7 @@ apps:
   git-dag:
     command: >
       env
+      GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       desktop-launch
       git dag
@@ -78,6 +80,7 @@ apps:
   git-cola-folder-handler:
     command: >
       env
+      GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       desktop-launch
       git-cola --repo
