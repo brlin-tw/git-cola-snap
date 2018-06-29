@@ -57,6 +57,9 @@ apps:
     # For signing commits and tags
     - gpg-keys
 
+    # Network access for remote operations
+    - network
+    - network-observe
   git-dag:
     command: >
       env
