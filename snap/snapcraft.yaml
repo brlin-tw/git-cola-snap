@@ -30,7 +30,7 @@ description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
 
 confinement: strict
-grade: devel
+grade: stable
 icon: snap/gui/icon.png
 
 apps:
