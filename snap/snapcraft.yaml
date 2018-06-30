@@ -40,6 +40,7 @@ apps:
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       desktop-launch
+      git-cola-launch
       git cola
     desktop: share/applications/git-cola.desktop
     plugs:
@@ -131,6 +132,24 @@ parts:
     stage:
     - patches/*
     override-prime: 'true'
+
+  # Launchers to fix runtime environments
+  launchers:
+    source: snap/launchers
+    source-type: local
+    plugin: dump
+
+    override-build: |
+      set -eu
+
+      mkdir \
+        --parents \
+        "$SNAPCRAFT_PART_INSTALL"/bin
+      cp \
+        --force \
+        --verbose \
+        *-launch \
+        "$SNAPCRAFT_PART_INSTALL"/bin
 
   # Ubuntu 16.04 doesn't have python-send2trash
   send2trash:
