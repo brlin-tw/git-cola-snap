@@ -51,17 +51,17 @@ apps:
     - unity7
 
     - home
-    - removable-media
+    - removable-media # Non-autoconnect
 
     # SSH remote support
-    - ssh-keys
+    - ssh-keys # Non-autoconnect
 
     # For signing commits and tags
-    - gpg-keys
+    - gpg-keys # Non-autoconnect
 
     # Network access for remote operations
     - network
-    - network-observe
+    - network-observe # Non-autoconnect
   git-dag:
     command: >
       env
