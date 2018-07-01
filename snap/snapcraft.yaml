@@ -157,7 +157,7 @@ parts:
     process-dependency-links: false
     python-packages:
     - send2trash
-    python-version: python2
+    python-version: python3
 
   git-cola:
     after:
@@ -170,16 +170,14 @@ parts:
     - make
     - rsync
 
-    - python
-    - python-pyqt5
-    - python-sphinx
+    # REPLACED: By Python 3 counterparts
+    #- python
+    #- python-pyqt5
+    #- python-sphinx
 
-    # REPLACED: Git Cola crashed when using Python 3
-    # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
-    # https://github.com/git-cola/git-cola/issues/849
-    #- python3
-    #- python3-pyqt5
-    #- python3-sphinx
+    - python3
+    - python3-pyqt5
+    - python3-sphinx
     stage-packages:
     # REPLACED: by send2trash part
     #- python3-send2trash
@@ -187,17 +185,15 @@ parts:
     - git-core
     - libdb5.3
 
-    - python
-    - python-pyqt5
+    # REPLACED: By Python 3 counterparts
+    #- python
+    #- python-pyqt5
 
     # Required by ssh-askpass(command: wish)
     - tk
 
-    # REPLACED: Git Cola crashed when using Python 3
-    # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
-    # https://github.com/git-cola/git-cola/issues/849
-    #- python3
-    #- python3-pyqt5
+    - python3
+    - python3-pyqt5
 
     source: git://github.com/git-cola/git-cola.git
     source-depth: 200
@@ -250,12 +246,8 @@ parts:
 
       snapcraftctl prime
 
-      # REPLACED: Git Cola crashed when using Python 3
-      # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
-      # https://github.com/git-cola/git-cola/issues/849
-      # Set default python intepreter
-      #ln \
-        #--force \
-        #--symbolic \
-        #python3 \
-        #"${SNAPCRAFT_PRIME}"/usr/bin/python
+      ln \
+        --force \
+        --symbolic \
+        python3 \
+        "${SNAPCRAFT_PRIME}"/usr/bin/python
