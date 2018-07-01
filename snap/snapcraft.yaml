@@ -84,9 +84,19 @@ apps:
     - home
     - removable-media # Non-autoconnect
 
+    # SSH remote support
+    - ssh-keys # Non-autoconnect
+
     # For signing commits and tags
     - gpg-keys # Non-autoconnect
 
+    # Network access for remote operations
+    - network
+    - network-observe # Non-autoconnect
+
+    # Unknown usage (but required)
+    - mount-observe # Non-autoconnect
+    - network-manager # Non-autoconnect
   git-cola-folder-handler:
     command: >
       env
@@ -111,6 +121,13 @@ apps:
     # For signing commits and tags
     - gpg-keys # Non-autoconnect
 
+    # Network access for remote operations
+    - network
+    - network-observe # Non-autoconnect
+
+    # Unknown usage (but required)
+    - mount-observe # Non-autoconnect
+    - network-manager # Non-autoconnect
 parts:
   # Patches to fix other parts
   patches:
