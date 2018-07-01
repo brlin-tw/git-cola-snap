@@ -39,6 +39,7 @@ apps:
       env
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
+      GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
       desktop-launch
       git-cola-launch
       git cola
@@ -66,6 +67,7 @@ apps:
       env
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
+      GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
       desktop-launch
       git dag
     desktop: share/applications/git-dag.desktop
@@ -86,6 +88,7 @@ apps:
       env
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
+      GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
       desktop-launch
       git-cola --repo
     desktop: share/applications/git-cola-folder-handler.desktop
