@@ -190,6 +190,9 @@ parts:
     - python
     - python-pyqt5
 
+    # Required by ssh-askpass(command: wish)
+    - tk
+
     # REPLACED: Git Cola crashed when using Python 3
     # Git Cola crashes with "TypeError: a bytes-like object is required, not 'str'" in confined environment · Issue #849 · git-cola/git-cola
     # https://github.com/git-cola/git-cola/issues/849
