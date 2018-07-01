@@ -64,6 +64,7 @@ apps:
     - network-observe # Non-autoconnect
 
     # Unknown usage (but required)
+    - mount-observe # Non-autoconnect
     - network-manager # Non-autoconnect
   git-dag:
     command: >
