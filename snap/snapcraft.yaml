@@ -62,6 +62,7 @@ apps:
     # Network access for remote operations
     - network
     - network-observe # Non-autoconnect
+    - network-manager # Non-autoconnect
   git-dag:
     command: >
       env
