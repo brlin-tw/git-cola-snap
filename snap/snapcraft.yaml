@@ -182,6 +182,9 @@ parts:
     # REPLACED: by send2trash part
     #- python3-send2trash
 
+    # `git stash` requires git-sh-i18n requires gettext.sh in PATH
+    - gettext-base
+
     - git-core
     - libdb5.3
 
