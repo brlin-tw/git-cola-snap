@@ -82,10 +82,10 @@ apps:
     - unity7
 
     - home
-    - removable-media
+    - removable-media # Non-autoconnect
 
     # For signing commits and tags
-    - gpg-keys
+    - gpg-keys # Non-autoconnect
 
   git-cola-folder-handler:
     command: >
@@ -103,13 +103,13 @@ apps:
     - unity7
 
     - home
-    - removable-media
+    - removable-media # Non-autoconnect
 
     # SSH remote support
-    - ssh-keys
+    - ssh-keys # Non-autoconnect
 
     # For signing commits and tags
-    - gpg-keys
+    - gpg-keys # Non-autoconnect
 
 parts:
   # Patches to fix other parts
