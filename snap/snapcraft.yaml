@@ -203,9 +203,6 @@ parts:
     - python3-pyqt5
     - python3-sphinx
     stage-packages:
-    # REPLACED: by send2trash part
-    #- python3-send2trash
-
     # `git stash` requires git-sh-i18n requires gettext.sh in PATH
     - gettext-base
 
@@ -215,15 +212,18 @@ parts:
     # Required by ssh-askpass
     - libtcl8.6
 
+    # Required by ssh-askpass(command: wish)
+    - tk
+
     # REPLACED: By Python 3 counterparts
     #- python
     #- python-pyqt5
 
-    # Required by ssh-askpass(command: wish)
-    - tk
-
     - python3
     - python3-pyqt5
+
+    # REPLACED: by send2trash part
+    #- python3-send2trash
 
     source: git://github.com/git-cola/git-cola.git
     source-depth: 200
