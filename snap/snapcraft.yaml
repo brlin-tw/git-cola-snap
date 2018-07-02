@@ -212,6 +212,9 @@ parts:
     - git-core
     - libdb5.3
 
+    # Required by ssh-askpass
+    - libtcl8.6
+
     # REPLACED: By Python 3 counterparts
     #- python
     #- python-pyqt5
