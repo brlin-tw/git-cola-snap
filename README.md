@@ -1,5 +1,5 @@
 # Snap Packaging of Git Cola
-This is the unofficial snap packaging of [Git Cola], [Snaps are universal Linux packages](https://snapcraft.io).
+This is the unofficial snap packaging of [Git Cola](https://github.com/git-cola/git-cola), [Snaps are universal Linux packages](https://snapcraft.io).
 
 Refer [snap/README.md](snap/README.md) for user-oriented information.
 
