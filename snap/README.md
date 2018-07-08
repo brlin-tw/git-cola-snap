@@ -17,7 +17,7 @@ Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.
 sudo snap install --channel=beta git-cola-brlin
 
 # Connect the Snap to Optional Interfaces
-## removable-media: For opening Git repositories under `/media/*` and `/run/media/*`
+## removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
 sudo snap connect git-cola-brlin:removable-media
 
 ## ssh-keys: For remote operation via SSH protocol
