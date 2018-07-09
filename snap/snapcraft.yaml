@@ -188,7 +188,6 @@ parts:
     after:
     - desktop-qt5
     - patches
-    - send2trash
 
     build-packages:
     - gettext
