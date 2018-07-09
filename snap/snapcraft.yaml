@@ -29,6 +29,17 @@ summary: The highly caffeinated Git GUI
 description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
 
+  INFORMATION REGARDING TO SECURITY CONFINEMENT
+
+  ## gpg-keys: For signing commits and tags
+  sudo snap connect git-cola:gpg-keys
+
+  ## removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
+  sudo snap connect git-cola:removable-media
+
+  ## ssh-keys: For remote operation via SSH protocol
+  sudo snap connect git-cola:ssh-keys
+
 confinement: strict
 grade: stable
 icon: snap/gui/icon.png
