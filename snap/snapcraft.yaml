@@ -40,6 +40,9 @@ description: |
   ## ssh-keys: For remote operation via SSH protocol
   sudo snap connect git-cola:ssh-keys
 
+  THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
+  https://github.com/Lin-Buo-Ren/git-cola-snap/issues
+
 confinement: strict
 grade: stable
 icon: snap/gui/icon.png
