@@ -1,6 +1,6 @@
 %YAML 1.2
 ---
-name: git-cola-brlin
+name: git-cola
 version: 'replaced-by-version-script'
 version-script: |
   set -eu
@@ -232,10 +232,10 @@ parts:
     plugin: make
     make-parameters:
     - DESTDIR=$SNAPCRAFT_PART_INSTALL
-    - prefix=/snap/git-cola-brlin/current
+    - prefix=/snap/git-cola/current
     - install-doc
     organize:
-      snap/git-cola-brlin/current/: /
+      snap/git-cola/current/: /
     filesets:
       additional-executables:
       - share/git-cola/bin/*

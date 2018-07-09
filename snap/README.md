@@ -4,7 +4,7 @@
 
 **This is the snap of Git Cola**, *"The highly caffeinated Git GUI"*. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.
 
-[![Build Status Badge of the `git-cola-brlin` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/git-cola-snap.svg "Build Status of the `git-cola-brlin` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/git-cola-brlin)
+[![Build Status Badge of the `git-cola` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/git-cola-snap.svg "Build Status of the `git-cola` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/git-cola)
 
 ![Screenshot of the Snapped Application](screenshots/view-main-amending.png "Screenshot of the Snapped Application")
 
@@ -14,17 +14,17 @@ Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.
 
 ```
 # Install Snap
-sudo snap install --channel=beta git-cola-brlin
+sudo snap install --channel=beta git-cola
 
 # Connect the Snap to Optional Interfaces
 ## removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
-sudo snap connect git-cola-brlin:removable-media
+sudo snap connect git-cola:removable-media
 
 ## ssh-keys: For remote operation via SSH protocol
-sudo snap connect git-cola-brlin:ssh-keys
+sudo snap connect git-cola:ssh-keys
 
 ## gpg-keys: For signing commits and tags
-sudo snap connect git-cola-brlin:gpg-keys
+sudo snap connect git-cola:gpg-keys
 
 ```
 
