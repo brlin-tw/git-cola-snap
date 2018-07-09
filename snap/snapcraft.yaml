@@ -249,6 +249,7 @@ parts:
     # `git stash` requires git-sh-i18n requires gettext.sh in PATH
     - gettext-base
 
+    - git-annex
     - git-core
     - libdb5.3
 

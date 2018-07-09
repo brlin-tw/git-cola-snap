@@ -54,7 +54,6 @@ sudo snap connect git-cola:ssh-keys
 
 ## What is NOT Working...yet
 
-- Git Annex(missing part)
 - External diff viewer(missing part)
 
 ## What is NOT Tested...yet
@@ -62,6 +61,7 @@ sudo snap connect git-cola:ssh-keys
 - send2trash
 - grep
 - Git Large File Storage
+- Git Annex
 - Anything not listed here
 
 ## Support
