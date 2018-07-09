@@ -54,7 +54,6 @@ sudo snap connect git-cola:gpg-keys
 
 ## What is NOT Working...yet
 
-- Git Large File Storage(missing part)
 - Git Annex(missing part)
 - External diff viewer(missing part)
 
@@ -62,6 +61,7 @@ sudo snap connect git-cola:gpg-keys
 
 - send2trash
 - grep
+- Git Large File Storage
 - Anything not listed here
 
 ## Support

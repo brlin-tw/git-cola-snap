@@ -184,6 +184,35 @@ parts:
     - send2trash
     python-version: python3
 
+  # Programs to help build other parts
+  utilities:
+    source: snap/utilities
+    override-pull: |
+      set -eu
+
+      snapcraftctl pull
+
+      mkdir \
+        --parents \
+        utilities
+      mv \
+        *.bash \
+        utilities
+
+    plugin: dump
+    override-prime: 'true'
+
+  git-lfs:
+    after:
+      - utilities
+    plugin: nil
+
+    override-pull: 'true'
+    override-build: |
+      set -eu
+
+      "${SNAPCRAFT_STAGE}"/utilities/snapcraft-install-latest-git-lfs-release.bash
+
   git-cola:
     after:
     - desktop-qt5
