@@ -17,14 +17,14 @@ Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.
 sudo snap install --channel=beta git-cola
 
 # Connect the Snap to Optional Interfaces
+## gpg-keys: For signing commits and tags
+sudo snap connect git-cola:gpg-keys
+
 ## removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
 sudo snap connect git-cola:removable-media
 
 ## ssh-keys: For remote operation via SSH protocol
 sudo snap connect git-cola:ssh-keys
-
-## gpg-keys: For signing commits and tags
-sudo snap connect git-cola:gpg-keys
 
 ```
 
