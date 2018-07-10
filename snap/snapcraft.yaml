@@ -35,14 +35,17 @@ description: |
 
   INFORMATION REGARDING TO SECURITY CONFINEMENT
 
-  ## gpg-keys: For signing commits and tags
-  sudo snap connect git-cola:gpg-keys
+  * gpg-keys: For signing commits and tags
 
-  ## removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
-  sudo snap connect git-cola:removable-media
+        sudo snap connect git-cola:gpg-keys
 
-  ## ssh-keys: For remote operation via SSH protocol
-  sudo snap connect git-cola:ssh-keys
+  * removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
+
+        sudo snap connect git-cola:removable-media
+
+  * ssh-keys: For remote operation via SSH protocol
+
+        sudo snap connect git-cola:ssh-keys
 
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
