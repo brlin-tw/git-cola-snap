@@ -344,3 +344,11 @@ parts:
         --expression='s/^ENABLE_USER_SITE = None$/ENABLE_USER_SITE = False/' \
         "${SNAPCRAFT_PRIME}"/usr/lib/python3.5/site.py
 
+      # This is the last step, let's now compile all our pyc files.
+      # 0 --workers: Use all available CPU threads
+      "${SNAPCRAFT_PRIME}"/usr/bin/python3 \
+        -m compileall \
+        -qq \
+        --workers 0 \
+        "${SNAPCRAFT_PRIME}" \
+        || true # May fail on Python 3 incompatible code
