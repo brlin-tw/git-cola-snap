@@ -336,3 +336,11 @@ parts:
         --symbolic \
         python3 \
         "${SNAPCRAFT_PRIME}"/usr/bin/python
+
+      # Now that everything is built, let's disable user site-packages
+      # as stated in PEP-0370
+      sed \
+        --in-place \
+        --expression='s/^ENABLE_USER_SITE = None$/ENABLE_USER_SITE = False/' \
+        "${SNAPCRAFT_PRIME}"/usr/lib/python3.5/site.py
+
