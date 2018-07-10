@@ -94,7 +94,9 @@ apps:
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
+      TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
+      git-cola-launch
       git dag
     desktop: share/applications/git-dag.desktop
     plugs:
@@ -125,7 +127,9 @@ apps:
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
+      TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
+      git-cola-launch
       git-cola --repo
     desktop: share/applications/git-cola-folder-handler.desktop
     plugs:
