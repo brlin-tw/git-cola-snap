@@ -220,6 +220,8 @@ parts:
     after:
       - utilities
     plugin: nil
+    build-packages:
+    - wget
 
     override-pull: 'true'
     override-build: |
