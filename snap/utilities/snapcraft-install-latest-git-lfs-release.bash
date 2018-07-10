@@ -198,12 +198,12 @@ init(){
 
 	wget \
 		--directory-prefix="${workdir}" \
-		https://github.com/git-lfs/git-lfs/releases/download/"${latest_release_tag}"/git-lfs-linux-"${arch}"-"${latest_release_tag:1}".tar.gz
+		https://github.com/git-lfs/git-lfs/releases/download/"${latest_release_tag}"/git-lfs-linux-"${git_lfs_arch}"-"${latest_release_tag:1}".tar.gz
 
 	tar\
 		--directory="${workdir}" \
 		--extract \
-		--file "${workdir}"/git-lfs-linux-"${arch}"-"${latest_release_tag:1}".tar.gz \
+		--file "${workdir}"/git-lfs-linux-"${git_lfs_arch}"-"${latest_release_tag:1}".tar.gz \
 		--verbose
 
 	sed \
