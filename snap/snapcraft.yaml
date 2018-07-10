@@ -224,6 +224,7 @@ parts:
   git-lfs:
     after:
     - utilities
+
     plugin: nil
     build-packages:
     - wget
