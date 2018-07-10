@@ -216,6 +216,7 @@ parts:
     plugin: dump
     override-prime: 'true'
 
+  # OPTIONAL: Git Large File System
   git-lfs:
     after:
     - utilities
