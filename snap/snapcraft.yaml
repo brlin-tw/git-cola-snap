@@ -55,6 +55,7 @@ grade: stable
 icon: snap/gui/icon.png
 
 apps:
+  # NOTE: Sync `command` prefix and `plugs` for each app.
   git-cola:
     command: >
       env
