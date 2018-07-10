@@ -29,6 +29,10 @@ summary: The highly caffeinated Git GUI
 description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
 
+  IMPORTANT INFORMATION
+
+  User's global Git configuration is not accessible due to Snapd's current limitations.  You may change the in-snap configuratio by editing $HOME/snap/git-cola/current/.gitconfig
+
   INFORMATION REGARDING TO SECURITY CONFINEMENT
 
   ## gpg-keys: For signing commits and tags
