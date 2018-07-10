@@ -103,7 +103,7 @@ fetch_latest_git_lfs_release_tag(){
 	return 0
 }; readonly -f fetch_latest_git_lfs_release_tag
 
-translate_snapcraft_arch_triplet_to_arch(){ # _arch_triplet_name
+translate_snapcraft_arch_triplet_to_git_lfs_arch(){ # _arch_triplet_name
 	if test $# -ne 1; then
 		printf -- \
 			'%s: FATAL: Argument quantity mismatch.\n' \
@@ -114,7 +114,7 @@ translate_snapcraft_arch_triplet_to_arch(){ # _arch_triplet_name
 
 	case "${SNAPCRAFT_ARCH_TRIPLET}" in
 		i386-linux-gnu)
-			printf i386
+			printf 386
 		;;
 		x86_64-linux-gnu)
 			printf amd64
@@ -134,7 +134,7 @@ translate_snapcraft_arch_triplet_to_arch(){ # _arch_triplet_name
 		;;
 	esac
 	return 0
-}; readonly -f translate_snapcraft_arch_triplet_to_arch
+}; readonly -f translate_snapcraft_arch_triplet_to_git_lfs_arch
 
 declare workdir
 workdir="$(
@@ -175,12 +175,12 @@ init(){
 		fi
 	done; unset snapcraft_environment_variable
 
-	declare arch
-	arch="$(translate_snapcraft_arch_triplet_to_arch "${SNAPCRAFT_ARCH_TRIPLET}")"
-	declare -r arch
+	declare git_lfs_arch
+	git_lfs_arch="$(translate_snapcraft_arch_triplet_to_git_lfs_arch "${SNAPCRAFT_ARCH_TRIPLET}")"
+	declare -r git_lfs_arch
 
-	case "${arch}" in
-		i386\
+	case "${git_lfs_arch}" in
+		386\
 		|amd64)
 			: # Supported
 		;;
