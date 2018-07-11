@@ -14,7 +14,7 @@ Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.
 
 ```
 # Install Snap
-sudo snap install --channel=beta git-cola
+sudo snap install git-cola
 
 # Connect the Snap to Optional Interfaces
 ## gpg-keys: For signing commits and tags
