@@ -9,11 +9,11 @@ set \
 	-o pipefail
 
 init(){
-    # Use host GUI editor
-    if [ -z "$(git config --global gui.editor)" ]; then
+    if [ ! -f "${SNAP_USER_DATA}"/.gitconfig ]; then
         printf -- \
             'git-cola-launch: Shipping first-time configuration...\n' \
             1>&2
+        # Use host GUI editor
         git config \
             --global \
             gui.editor \
