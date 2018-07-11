@@ -62,9 +62,9 @@ apps:
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
-      PERLLIB=$SNAP/usr/share/perl/5.22.1:$SNAP/etc/perl:$SNAP/usr/local/lib/x86_64-linux-gnu/perl/5.22.1:$SNAP/usr/local/share/perl/5.22.1:$SNAP/usr/lib/x86_64-linux-gnu/perl5/5.22:$SNAP/usr/share/perl5:$SNAP/usr/lib/x86_64-linux-gnu/perl/5.22:$SNAP/usr/share/perl/5.22:$SNAP/usr/local/lib/site_perl:$SNAP/usr/lib/x86_64-linux-gnu/perl-base
       TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
+      perl-launch
       git-cola-launch
       git cola
     desktop: share/applications/git-cola.desktop
@@ -96,9 +96,9 @@ apps:
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
-      PERLLIB=$SNAP/usr/share/perl/5.22.1:$SNAP/etc/perl:$SNAP/usr/local/lib/x86_64-linux-gnu/perl/5.22.1:$SNAP/usr/local/share/perl/5.22.1:$SNAP/usr/lib/x86_64-linux-gnu/perl5/5.22:$SNAP/usr/share/perl5:$SNAP/usr/lib/x86_64-linux-gnu/perl/5.22:$SNAP/usr/share/perl/5.22:$SNAP/usr/local/lib/site_perl:$SNAP/usr/lib/x86_64-linux-gnu/perl-base
       TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
+      perl-launch
       git-cola-launch
       git dag
     desktop: share/applications/git-dag.desktop
@@ -130,9 +130,9 @@ apps:
       GIT_CONFIG_NOSYSTEM=true
       GIT_EXEC_PATH=$SNAP/usr/lib/git-core
       GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
-      PERLLIB=$SNAP/usr/share/perl/5.22.1:$SNAP/etc/perl:$SNAP/usr/local/lib/x86_64-linux-gnu/perl/5.22.1:$SNAP/usr/local/share/perl/5.22.1:$SNAP/usr/lib/x86_64-linux-gnu/perl5/5.22:$SNAP/usr/share/perl5:$SNAP/usr/lib/x86_64-linux-gnu/perl/5.22:$SNAP/usr/share/perl/5.22:$SNAP/usr/local/lib/site_perl:$SNAP/usr/lib/x86_64-linux-gnu/perl-base
       TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
+      perl-launch
       git-cola-launch
       git-cola --repo
     desktop: share/applications/git-cola-folder-handler.desktop
