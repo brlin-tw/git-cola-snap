@@ -18,6 +18,12 @@ init(){
             --global \
             gui.editor \
             xdg-open
+
+        # We ship Kdiff3
+        git config \
+            --global \
+            diff.tool \
+            kdiff3
     fi
 
     exec "${@}"

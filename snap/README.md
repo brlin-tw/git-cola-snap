@@ -51,10 +51,11 @@ sudo snap connect git-cola:ssh-keys
 - Stash
 - File browser
 - Visualize via gitk
+- Compare differences between expressions/branches
 
 ## What is NOT Working...yet
 
-- External diff viewer(missing part)
+- (None as now)
 
 ## What is NOT Tested...yet
 

@@ -246,6 +246,13 @@ parts:
 
       "${SNAPCRAFT_STAGE}"/utilities/snapcraft-install-latest-git-lfs-release.bash
 
+  kdiff:
+    plugin: nil
+    stage-packages:
+    - kdiff3-qt
+
+    override-pull: 'true'
+
   git-cola:
     after:
     - desktop-qt5
