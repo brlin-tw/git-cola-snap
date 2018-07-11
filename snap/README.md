@@ -55,7 +55,7 @@ sudo snap connect git-cola:ssh-keys
 
 ## What is NOT Working...yet
 
-- (None as now)
+- (None as of now)
 
 ## What is NOT Tested...yet
 
