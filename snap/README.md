@@ -1,8 +1,8 @@
-# Snap Packaging of Git Cola
+# Snap Packaging for Git Cola
 
 ![Icon of Git Cola](gui/icon.png "Icon of Git Cola")
 
-**This is the snap of Git Cola**, *"The highly caffeinated Git GUI"*. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.
+**This is the snap for Git Cola**, *"The highly caffeinated Git GUI"*. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.
 
 [![Build Status Badge of the `git-cola` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/git-cola-snap.svg "Build Status of the `git-cola` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/git-cola-snap)
 
