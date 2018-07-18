@@ -58,7 +58,7 @@ confinement: strict
 grade: stable
 icon: snap/gui/icon.png
 passthrough:
-  contact: https://github.com/Lin-Buo-Ren/git-cola-snap/issues
+  support_url: https://github.com/Lin-Buo-Ren/git-cola-snap/issues
   license: GPL-2.0+
 
 apps:
