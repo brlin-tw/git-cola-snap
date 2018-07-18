@@ -57,9 +57,6 @@ description: |
 confinement: strict
 grade: stable
 icon: snap/gui/icon.png
-passthrough:
-  support_url: https://github.com/Lin-Buo-Ren/git-cola-snap/issues
-  license: GPL-2.0+
 
 apps:
   # NOTE: Sync `command` prefix and `plugs` for each app.
