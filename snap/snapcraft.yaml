@@ -75,8 +75,8 @@ apps:
     plugs:
     - desktop
     - desktop-legacy
-    - x11
     - unity7
+    - x11
 
     - home
     - removable-media # Non-autoconnect
@@ -110,8 +110,8 @@ apps:
     plugs:
     - desktop
     - desktop-legacy
-    - x11
     - unity7
+    - x11
 
     - home
     - removable-media # Non-autoconnect
@@ -145,8 +145,8 @@ apps:
     plugs:
     - desktop
     - desktop-legacy
-    - x11
     - unity7
+    - x11
 
     - home
     - removable-media # Non-autoconnect
