@@ -307,6 +307,7 @@ parts:
 
     source: git://github.com/git-cola/git-cola.git
     source-depth: 200
+    source-tag: v3.1
 
     plugin: make
     make-parameters:
