@@ -76,6 +76,7 @@ apps:
     - desktop
     - desktop-legacy
     - unity7
+    - wayland
     - x11
 
     - home
@@ -111,6 +112,7 @@ apps:
     - desktop
     - desktop-legacy
     - unity7
+    - wayland
     - x11
 
     - home
@@ -146,6 +148,7 @@ apps:
     - desktop
     - desktop-legacy
     - unity7
+    - wayland
     - x11
 
     - home
