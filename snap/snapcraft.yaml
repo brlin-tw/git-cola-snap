@@ -51,6 +51,13 @@ description: |
 
         sudo snap connect git-cola:ssh-keys
 
+  BUILD CONFIGURATION
+
+  * Diff viewer: Kdiff3
+  * Git: From Ubuntu 16.04 software archive
+  * Git Annex: From Ubuntu 16.04 software archive
+  * Git Large File system: Latest release from upstream at build time(only in i386/amd64)
+
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
 
