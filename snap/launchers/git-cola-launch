@@ -9,22 +9,17 @@ set \
 	-o pipefail
 
 init(){
-    if [ ! -f "${SNAP_USER_DATA}"/.gitconfig ]; then
-        printf -- \
-            'git-cola-launch: Shipping first-time configuration...\n' \
-            1>&2
-        # Use host GUI editor
-        git config \
-            --global \
-            gui.editor \
-            xdg-open
+	# Use host GUI editor
+	git config \
+		--global \
+		gui.editor \
+		xdg-open
 
-        # We ship Kdiff3
-        git config \
-            --global \
-            diff.tool \
-            kdiff3
-    fi
+	# We ship Kdiff3
+	git config \
+		--global \
+		diff.tool \
+		kdiff3
 
     exec "${@}"
 }
