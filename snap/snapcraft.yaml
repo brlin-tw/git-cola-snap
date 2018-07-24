@@ -62,6 +62,8 @@ description: |
   * Git: From Ubuntu 16.04 software archive
   * Git Annex: From Ubuntu 16.04 software archive
   * Git Large File system: Latest release from upstream at build time(only in i386/amd64)
+  * History Browser: gitk from Ubuntu 16.04 software archive
+  * Merge Tool: Kdiff3 from Ubuntu 16.04 software archive
 
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
