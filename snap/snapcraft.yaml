@@ -291,6 +291,13 @@ parts:
 
     override-pull: 'true'
 
+  history-browser:
+    plugin: nil
+    stage-packages:
+    - gitk
+
+    override-pull: 'true'
+
   git-cola:
     after:
     - desktop-qt5
