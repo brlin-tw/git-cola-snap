@@ -53,7 +53,12 @@ description: |
 
   BUILD CONFIGURATION
 
-  * Diff viewer: Kdiff3
+  For `stable` channel the formal release of Git Cola is used, for `beta` and `edge` channel the latest development snapshot is used.
+
+  Information of other Git Cola's dependencies:
+
+  * Blame Viewer: git-gui from Ubuntu 16.04 software archive
+  * Diff Tool: Kdiff3 from Ubuntu 16.04 software archive
   * Git: From Ubuntu 16.04 software archive
   * Git Annex: From Ubuntu 16.04 software archive
   * Git Large File system: Latest release from upstream at build time(only in i386/amd64)
@@ -267,6 +272,13 @@ parts:
     plugin: nil
     stage-packages:
     - kdiff3-qt
+
+    override-pull: 'true'
+
+  git-gui:
+    plugin: nil
+    stage-packages:
+    - git-gui
 
     override-pull: 'true'
 
