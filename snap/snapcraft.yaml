@@ -110,6 +110,7 @@ apps:
     # Unknown (but suggested in runtime)
     - mount-observe # Non-autoconnect
     - network-manager # Non-autoconnect
+    - opengl
   git-dag:
     command: >
       env
@@ -146,6 +147,7 @@ apps:
     # Unknown (but suggested in runtime)
     - mount-observe # Non-autoconnect
     - network-manager # Non-autoconnect
+    - opengl
   git-cola-folder-handler:
     command: >
       env
@@ -182,6 +184,7 @@ apps:
     # Unknown (but suggested in runtime)
     - mount-observe # Non-autoconnect
     - network-manager # Non-autoconnect
+    - opengl
 parts:
   # Patches to fix other parts
   patches:
