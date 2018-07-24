@@ -20,6 +20,10 @@ init(){
 		--global \
 		diff.tool \
 		kdiff3
+	git config \
+		--global \
+		merge.tool \
+		kdiff3
 
     exec "${@}"
 }
