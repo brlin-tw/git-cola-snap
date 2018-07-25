@@ -9,7 +9,7 @@ set \
 	-o pipefail
 
 init(){
-	TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
+	TCL_LIBRARY="$SNAP"/usr/share/tcltk/tcl8.6
 	
 	export TCL_LIBRARY
 
