@@ -15,24 +15,7 @@ init(){
 		printf -- '\n%s\n' 'AddKeysToAgent yes' >>"${HOME}"/.ssh/config
 	fi
 
-	# if ssh-agent is already running, reuse the existed instance
-	if \
-		test -f "${HOME}"/.ssh_agent_pid \
-		&& test -f "${HOME}"/.ssh_auth_sock \
-		&& test -n "$(cat "${HOME}"/.ssh_agent_pid)" \
-		&& test "$(ps -q "$(cat "${HOME}"/.ssh_agent_pid)" -o comm=)" = ssh-agent \
-		&& test -S "$(cat "${HOME}"/.ssh_auth_sock)"
-		then
-		SSH_AGENT_PID="$(cat "${HOME}"/.ssh_agent_pid)"
-		SSH_AUTH_SOCK="$(cat "${HOME}"/.ssh_auth_sock)"
-		export SSH_AGENT_PID SSH_AUTH_SOCK
-	else
-		eval `ssh-agent -s -t 3600`
-		printf -- '%s' "${SSH_AGENT_PID}" >"${HOME}"/.ssh_agent_pid
-		printf -- '%s' "${SSH_AUTH_SOCK}" >"${HOME}"/.ssh_auth_sock
-	fi
-	
-	exec "${@}"
+	exec ssh-agent "${@}"
 }
 
 init "${@}"
