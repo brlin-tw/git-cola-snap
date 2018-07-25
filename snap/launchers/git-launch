@@ -14,11 +14,13 @@ init(){
 
 	GIT_EXEC_PATH=$SNAP/usr/lib/git-core
 	GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
+	GIT_TEMPLATE_DIR=$SNAP/usr/share/git-core/templates
 
 	export \
 		GIT_CONFIG_NOSYSTEM \
 		GIT_EXEC_PATH \
-		GIT_TEXTDOMAINDIR
+		GIT_TEXTDOMAINDIR \
+		GIT_TEMPLATE_DIR
 
 	exec "${@}"
 }
