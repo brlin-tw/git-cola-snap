@@ -9,6 +9,8 @@ set \
 	-o pipefail
 
 init(){
+	# tclvars manual page - Tcl Built-In Commands
+	# https://www.tcl.tk/man/tcl/TclCmd/tclvars.htm#M7
 	TCL_LIBRARY="$SNAP"/usr/share/tcltk/tcl8.6
 	
 	export TCL_LIBRARY
