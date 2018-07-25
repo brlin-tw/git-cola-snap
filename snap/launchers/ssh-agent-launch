@@ -14,7 +14,7 @@ init(){
 	# Ship AddKeysToAgent ssh config if not specified
 	mkdir --parent "${HOME}"/.ssh
 	if ! grep --quiet AddKeysToAgent "${HOME}"/.ssh/config; then
-		printf -- '\n%s\n' 'AddKeysToAgent ask' >>"${HOME}"/.ssh/config
+		printf -- '\n%s\n' 'AddKeysToAgent yes' >>"${HOME}"/.ssh/config
 	fi
 
 	# if ssh-agent is already running, reuse the existed instance
