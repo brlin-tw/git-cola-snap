@@ -39,10 +39,6 @@ description: |
 
         sudo snap connect git-cola:gpg-keys
 
-  * password-manager-service: For accessing credentials to decrypt SSH keys.
-
-        sudo snap connect git-cola:password-manager-service
-
   * removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
 
         sudo snap connect git-cola:removable-media
@@ -98,7 +94,6 @@ apps:
 
     # SSH remote support
     - ssh-keys # Non-autoconnect
-    - password-manager-service # Non-autoconnect
 
     # For signing commits and tags
     - gpg-keys # Non-autoconnect
@@ -133,7 +128,6 @@ apps:
 
     # SSH remote support
     - ssh-keys # Non-autoconnect
-    - password-manager-service # Non-autoconnect
 
     # For signing commits and tags
     - gpg-keys # Non-autoconnect
@@ -168,7 +162,6 @@ apps:
 
     # SSH remote support
     - ssh-keys # Non-autoconnect
-    - password-manager-service # Non-autoconnect
 
     # For signing commits and tags
     - gpg-keys # Non-autoconnect
