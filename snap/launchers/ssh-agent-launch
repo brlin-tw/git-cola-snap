@@ -9,8 +9,6 @@ set \
 	-o pipefail
 
 init(){
-	set -o xtrace
-
 	# Ship AddKeysToAgent ssh config if not specified
 	mkdir --parent "${HOME}"/.ssh
 	if ! grep --quiet AddKeysToAgent "${HOME}"/.ssh/config; then
