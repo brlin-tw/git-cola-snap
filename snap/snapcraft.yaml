@@ -78,13 +78,10 @@ apps:
   # NOTE: Sync `command` prefix and `plugs` for each app.
   git-cola:
     command: >
-      env
-      GIT_CONFIG_NOSYSTEM=true
-      GIT_EXEC_PATH=$SNAP/usr/lib/git-core
-      GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
-      TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
       perl-launch
+      tcltk-launch
+      git-launch
       git-cola-launch
       git cola
     desktop: share/applications/git-cola.desktop
@@ -115,13 +112,10 @@ apps:
     - opengl
   git-dag:
     command: >
-      env
-      GIT_CONFIG_NOSYSTEM=true
-      GIT_EXEC_PATH=$SNAP/usr/lib/git-core
-      GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
-      TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
       perl-launch
+      tcltk-launch
+      git-launch
       git-cola-launch
       git dag
     desktop: share/applications/git-dag.desktop
@@ -152,13 +146,10 @@ apps:
     - opengl
   git-cola-folder-handler:
     command: >
-      env
-      GIT_CONFIG_NOSYSTEM=true
-      GIT_EXEC_PATH=$SNAP/usr/lib/git-core
-      GIT_TEXTDOMAINDIR=$SNAP/usr/share/locale
-      TCL_LIBRARY=$SNAP/usr/share/tcltk/tcl8.6
       desktop-launch
       perl-launch
+      tcltk-launch
+      git-launch
       git-cola-launch
       git-cola --repo
     desktop: share/applications/git-cola-folder-handler.desktop
