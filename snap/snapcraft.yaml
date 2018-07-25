@@ -81,6 +81,7 @@ apps:
       desktop-launch
       perl-launch
       tcltk-launch
+      ssh-agent-launch
       git-launch
       git-cola-launch
       git cola
@@ -115,6 +116,7 @@ apps:
       desktop-launch
       perl-launch
       tcltk-launch
+      ssh-agent-launch
       git-launch
       git-cola-launch
       git dag
@@ -149,6 +151,7 @@ apps:
       desktop-launch
       perl-launch
       tcltk-launch
+      ssh-agent-launch
       git-launch
       git-cola-launch
       git-cola --repo
@@ -334,6 +337,9 @@ parts:
 
     # REPLACED: by send2trash part
     #- python3-send2trash
+
+    # For `ssh-agent`
+    - openssh-client
 
     source: git://github.com/git-cola/git-cola.git
     source-depth: 200
