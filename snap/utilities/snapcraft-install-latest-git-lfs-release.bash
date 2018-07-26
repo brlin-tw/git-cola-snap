@@ -147,9 +147,6 @@ declare -r workdir
 
 declare global_keep_temp_files=false
 
-## init function: entrypoint of main program
-## This function is called near the end of the file,
-## with the script's command-line parameters as arguments
 init(){
 	if ! process_commandline_arguments; then
 		printf -- \
