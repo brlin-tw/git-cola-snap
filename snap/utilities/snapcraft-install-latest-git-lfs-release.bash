@@ -193,24 +193,40 @@ init(){
 	latest_release_tag="$(fetch_latest_git_lfs_release_tag)"
 	readonly latest_release_tag
 
+	declare download_url
+	download_url="https://github.com/git-lfs/git-lfs/releases/download/"${latest_release_tag}"/git-lfs-linux-"${git_lfs_arch}"-"${latest_release_tag}".tar.gz"
+	readonly download_url
+
+	declare downloaded_archive_filename
+	downloaded_archive_filename="$(basename "${download_url}")"
+	readonly downloaded_archive_filename
+
 	wget \
 		--directory-prefix="${workdir}" \
-		https://github.com/git-lfs/git-lfs/releases/download/"${latest_release_tag}"/git-lfs-linux-"${git_lfs_arch}"-"${latest_release_tag:1}".tar.gz
+		"${download_url}"
 
 	tar\
 		--directory="${workdir}" \
 		--extract \
-		--file "${workdir}"/git-lfs-linux-"${git_lfs_arch}"-"${latest_release_tag:1}".tar.gz \
+		--file "${workdir}"/"${downloaded_archive_filename}" \
 		--verbose
 
 	sed \
 		--expression='s/git lfs install//g' \
 		--in-place \
-		"${workdir}"/git-lfs-"${latest_release_tag:1}"/install.sh
+		"${workdir}"/install.sh
+
+	# WORKAROUND: Since v2.5.0 the install script has no executable bit
+	# v2.5.0: Linux AMD64: Install.sh isn't executable · Issue #3154 · git-lfs/git-lfs
+	# https://github.com/git-lfs/git-lfs/issues/3154
+	chmod \
+		a+x \
+		"${workdir}"/install.sh
+
 
 	env \
 		PREFIX="${SNAPCRAFT_PART_INSTALL}" \
-		"${workdir}"/git-lfs-"${latest_release_tag:1}"/install.sh
+		"${workdir}"/install.sh
 
 	exit 0
 }; declare -fr init
