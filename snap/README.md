@@ -63,7 +63,8 @@ sudo snap connect git-cola:ssh-keys
 - grep
 - Git Large File Storage
 - Git Annex
-- Anything not listed here
+
+And all the things not listed in the "What is Working" section
 
 ## Support
 
