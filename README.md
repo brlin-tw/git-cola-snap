@@ -24,7 +24,7 @@ Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) ar
 - [x] Add the provided Snapcraft build badge to `snap/README.md`
 - [x] Publish the snap in the Snap store stable channel
 - [x] Update the install instructions in `snap/README.md`
-- [ ] Post an announcement in the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
+- [x] Post an announcement in the [Snapcraft Forum](https://forum.snapcraft.io) - [link](https://forum.snapcraft.io/t/unofficial-snap-packaging-for-git-cola-the-highly-caffeinated-git-gui/6410)
 - [ ] Submit a pull request or patch upstream that adds snap install documentation - [link]()
 - [ ] Submit a pull request or patch upstream that adds the `snapcraft.yaml` and any required assets/launchers - [link]()
 - [ ] Add upstream contact information to this `README.md`
