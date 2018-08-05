@@ -57,6 +57,10 @@ sudo snap connect git-cola:ssh-keys
 
 - (None as of now)
 
+## What is NOT Working...but expected to be so
+
+* Hook scripts that require external commands from the host won't be working due to security confinement, you may workaround it by disabling the security confinement or toggle the "Bypass Commit Hooks" switch in the "Actions..." menu in the commit widget.
+
 ## What is NOT Tested...yet
 
 - send2trash
