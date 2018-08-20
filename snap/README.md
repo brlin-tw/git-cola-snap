@@ -55,7 +55,10 @@ sudo snap connect git-cola:ssh-keys
 
 ## What is NOT Working...yet
 
-- (None as of now)
+- Moving files to the trash can ([Issue #9](https://github.com/Lin-Buo-Ren/git-cola-snap/issues/9))
+- Commit message spellchecking ([Issue #8](https://github.com/Lin-Buo-Ren/git-cola-snap/issues/8))
+- GPG-signing commits ([Issue #7](https://github.com/Lin-Buo-Ren/git-cola-snap/issues/7))
+- User global Git configuration is not available ([Issue #4](https://github.com/Lin-Buo-Ren/git-cola-snap/issues/4))
 
 ## What is NOT Working...but expected to be so
 
@@ -63,7 +66,6 @@ sudo snap connect git-cola:ssh-keys
 
 ## What is NOT Tested...yet
 
-- send2trash
 - grep
 - Git Large File Storage
 - Git Annex
