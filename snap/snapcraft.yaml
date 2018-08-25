@@ -53,13 +53,13 @@ description: |
 
   Information of other Git Cola's dependencies:
 
-  * Blame Viewer: git-gui from Ubuntu 16.04 software archive
-  * Diff Tool: Kdiff3 from Ubuntu 16.04 software archive
+  * Blame Viewer: git-gui
+  * Diff Tool: Kdiff3
   * Git: From Ubuntu 16.04 software archive
   * Git Annex: From Ubuntu 16.04 software archive
-  * Git Large File system: Latest release from upstream at build time(only in i386/amd64)
-  * History Browser: gitk from Ubuntu 16.04 software archive
-  * Merge Tool: Kdiff3 from Ubuntu 16.04 software archive
+  * Git Large File system: Latest upstream release(only shipped in i386/amd64)
+  * History Browser: gitk
+  * Merge Tool: Kdiff3
 
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
