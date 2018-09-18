@@ -25,7 +25,13 @@ init(){
 		merge.tool \
 		kdiff3
 
-    exec "${@}"
+	# Remember passwords for 1 hour
+	git config \
+		--global \
+		credential.helper \
+		'cache --timeout 3600'
+
+	exec "${@}"
 }
 
 init "${@}"
