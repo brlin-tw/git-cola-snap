@@ -49,7 +49,7 @@ description: |
 
   BUILD CONFIGURATION
 
-  For `stable` channel the formal release of Git Cola is used, for `beta` and `edge` channel the latest development snapshot is used.
+  For `stable` channel the formal release of Git Cola is used, latest development snapshots are periodically published to the `edge` channel
 
   Information of other Git Cola's dependencies:
 
