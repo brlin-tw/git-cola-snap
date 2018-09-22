@@ -338,7 +338,7 @@ parts:
     source-depth: 200
 
     # For stable channel release
-    source-tag: v3.2
+    #source-tag: v3.2
 
     plugin: make
     make-parameters:
