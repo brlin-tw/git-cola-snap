@@ -216,11 +216,11 @@ parts:
     plugin: make
     make-parameters:
     - DESTDIR=$SNAPCRAFT_PART_INSTALL
-    - prefix=/snap/git-cola/current
+    - prefix=/snap/$SNAPCRAFT_PROJECT_NAME/current
     - PYTHON=python3
     - install-doc
     organize:
-      snap/git-cola/current/: /
+      snap/$SNAPCRAFT_PROJECT_NAME/current/: /
     filesets:
       additional-executables:
       - share/git-cola/bin/*
