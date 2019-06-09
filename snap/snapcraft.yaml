@@ -1,6 +1,7 @@
 %YAML 1.1
 ---
 name: git-cola
+title: Git Cola (UNOFFICIAL)
 summary: The highly caffeinated Git GUI
 description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
