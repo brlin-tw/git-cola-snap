@@ -41,12 +41,13 @@ description: |
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
 
+icon: snap/gui/icon.png
+license: GPL-2.0+
+
 adopt-info: git-cola
 base: core
 confinement: strict
 grade: stable
-icon: snap/gui/icon.png
-license: GPL-2.0+
 
 apps:
   # NOTE: Sync `command` prefix and `plugs` for each app.
