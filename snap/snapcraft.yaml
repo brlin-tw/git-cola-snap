@@ -285,7 +285,6 @@ parts:
         || true # May fail on Python 3 incompatible code
 
 apps:
-  # NOTE: Sync `command` prefix and `plugs` for each app.
   git-cola:
     command: >
       desktop-launch
@@ -296,30 +295,7 @@ apps:
       git-cola-launch
       git cola
     desktop: share/applications/git-cola.desktop
-    plugs:
-    - desktop
-    - desktop-legacy
-    - unity7
-    - wayland
-    - x11
 
-    - home
-    - removable-media # Non-autoconnect
-
-    # SSH remote support
-    - ssh-keys # Non-autoconnect
-
-    # For signing commits and tags
-    - gpg-keys # Non-autoconnect
-
-    # Network access for remote operations
-    - network
-    - network-observe # Non-autoconnect
-
-    # Unknown (but suggested in runtime)
-    - mount-observe # Non-autoconnect
-    - network-manager # Non-autoconnect
-    - opengl
   git-dag:
     command: >
       desktop-launch
@@ -330,30 +306,7 @@ apps:
       git-cola-launch
       git dag
     desktop: share/applications/git-dag.desktop
-    plugs:
-    - desktop
-    - desktop-legacy
-    - unity7
-    - wayland
-    - x11
 
-    - home
-    - removable-media # Non-autoconnect
-
-    # SSH remote support
-    - ssh-keys # Non-autoconnect
-
-    # For signing commits and tags
-    - gpg-keys # Non-autoconnect
-
-    # Network access for remote operations
-    - network
-    - network-observe # Non-autoconnect
-
-    # Unknown (but suggested in runtime)
-    - mount-observe # Non-autoconnect
-    - network-manager # Non-autoconnect
-    - opengl
   git-cola-folder-handler:
     command: >
       desktop-launch
@@ -364,27 +317,58 @@ apps:
       git-cola-launch
       git-cola --repo
     desktop: share/applications/git-cola-folder-handler.desktop
-    plugs:
-    - desktop
-    - desktop-legacy
-    - unity7
-    - wayland
-    - x11
 
-    - home
-    - removable-media # Non-autoconnect
+# Refer the following documentation for asserting interface plugs and slots in a security confined snap:
+# Interface management - doc - snapcraft.io
+# https://docs.snapcraft.io/interface-management/6154
+# Supported interfaces - doc - snapcraft.io
+# https://docs.snapcraft.io/supported-interfaces/7744
+# Non-A/C: Non-autoconnect interface
+plugs:
+  # Application-specific files access
+  # The auto-connection requires store grant
+  # https://forum.snapcraft.io/t/the-personal-files-interface/9357
+  # https://forum.snapcraft.io/t/the-system-files-interface/9358
+  #config-git-cola:
+    #interface: personal-files
+    #read:
+    #- $HOME/.config/git-cola
 
-    # SSH remote support
-    - ssh-keys # Non-autoconnect
+  # Common desktop interfaces
+  # https://forum.snapcraft.io/t/the-desktop-interfaces/2042
+  desktop:
+  desktop-legacy:
+  unity7:
+  wayland:
 
-    # For signing commits and tags
-    - gpg-keys # Non-autoconnect
+  # Gtk Common Themes support
+  # https://forum.snapcraft.io/t/how-to-use-the-system-gtk-theme-via-the-gtk-common-themes-snap/6235
+  gsettings:
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
 
-    # Network access for remote operations
-    - network
-    - network-observe # Non-autoconnect
+  # For signing commits and tags
+  gpg-keys: # Non-autoconnect
 
-    # Unknown (but suggested in runtime)
-    - mount-observe # Non-autoconnect
-    - network-manager # Non-autoconnect
-    - opengl
+  # Regular files access
+  home:
+  removable-media: # Non-A/C
+
+  # Make Qt happy
+  opengl:
+
+  # SSH remote support
+  ssh-keys: # Non-autoconnect
+
+  # Network access
+  network:
