@@ -49,110 +49,6 @@ base: core
 confinement: strict
 grade: stable
 
-apps:
-  # NOTE: Sync `command` prefix and `plugs` for each app.
-  git-cola:
-    command: >
-      desktop-launch
-      perl-launch
-      tcltk-launch
-      ssh-agent-launch
-      git-launch
-      git-cola-launch
-      git cola
-    desktop: share/applications/git-cola.desktop
-    plugs:
-    - desktop
-    - desktop-legacy
-    - unity7
-    - wayland
-    - x11
-
-    - home
-    - removable-media # Non-autoconnect
-
-    # SSH remote support
-    - ssh-keys # Non-autoconnect
-
-    # For signing commits and tags
-    - gpg-keys # Non-autoconnect
-
-    # Network access for remote operations
-    - network
-    - network-observe # Non-autoconnect
-
-    # Unknown (but suggested in runtime)
-    - mount-observe # Non-autoconnect
-    - network-manager # Non-autoconnect
-    - opengl
-  git-dag:
-    command: >
-      desktop-launch
-      perl-launch
-      tcltk-launch
-      ssh-agent-launch
-      git-launch
-      git-cola-launch
-      git dag
-    desktop: share/applications/git-dag.desktop
-    plugs:
-    - desktop
-    - desktop-legacy
-    - unity7
-    - wayland
-    - x11
-
-    - home
-    - removable-media # Non-autoconnect
-
-    # SSH remote support
-    - ssh-keys # Non-autoconnect
-
-    # For signing commits and tags
-    - gpg-keys # Non-autoconnect
-
-    # Network access for remote operations
-    - network
-    - network-observe # Non-autoconnect
-
-    # Unknown (but suggested in runtime)
-    - mount-observe # Non-autoconnect
-    - network-manager # Non-autoconnect
-    - opengl
-  git-cola-folder-handler:
-    command: >
-      desktop-launch
-      perl-launch
-      tcltk-launch
-      ssh-agent-launch
-      git-launch
-      git-cola-launch
-      git-cola --repo
-    desktop: share/applications/git-cola-folder-handler.desktop
-    plugs:
-    - desktop
-    - desktop-legacy
-    - unity7
-    - wayland
-    - x11
-
-    - home
-    - removable-media # Non-autoconnect
-
-    # SSH remote support
-    - ssh-keys # Non-autoconnect
-
-    # For signing commits and tags
-    - gpg-keys # Non-autoconnect
-
-    # Network access for remote operations
-    - network
-    - network-observe # Non-autoconnect
-
-    # Unknown (but suggested in runtime)
-    - mount-observe # Non-autoconnect
-    - network-manager # Non-autoconnect
-    - opengl
 parts:
   # Files to patch the files in the snap
   patching:
@@ -387,3 +283,108 @@ parts:
         --workers 0 \
         "${SNAPCRAFT_PRIME}" \
         || true # May fail on Python 3 incompatible code
+
+apps:
+  # NOTE: Sync `command` prefix and `plugs` for each app.
+  git-cola:
+    command: >
+      desktop-launch
+      perl-launch
+      tcltk-launch
+      ssh-agent-launch
+      git-launch
+      git-cola-launch
+      git cola
+    desktop: share/applications/git-cola.desktop
+    plugs:
+    - desktop
+    - desktop-legacy
+    - unity7
+    - wayland
+    - x11
+
+    - home
+    - removable-media # Non-autoconnect
+
+    # SSH remote support
+    - ssh-keys # Non-autoconnect
+
+    # For signing commits and tags
+    - gpg-keys # Non-autoconnect
+
+    # Network access for remote operations
+    - network
+    - network-observe # Non-autoconnect
+
+    # Unknown (but suggested in runtime)
+    - mount-observe # Non-autoconnect
+    - network-manager # Non-autoconnect
+    - opengl
+  git-dag:
+    command: >
+      desktop-launch
+      perl-launch
+      tcltk-launch
+      ssh-agent-launch
+      git-launch
+      git-cola-launch
+      git dag
+    desktop: share/applications/git-dag.desktop
+    plugs:
+    - desktop
+    - desktop-legacy
+    - unity7
+    - wayland
+    - x11
+
+    - home
+    - removable-media # Non-autoconnect
+
+    # SSH remote support
+    - ssh-keys # Non-autoconnect
+
+    # For signing commits and tags
+    - gpg-keys # Non-autoconnect
+
+    # Network access for remote operations
+    - network
+    - network-observe # Non-autoconnect
+
+    # Unknown (but suggested in runtime)
+    - mount-observe # Non-autoconnect
+    - network-manager # Non-autoconnect
+    - opengl
+  git-cola-folder-handler:
+    command: >
+      desktop-launch
+      perl-launch
+      tcltk-launch
+      ssh-agent-launch
+      git-launch
+      git-cola-launch
+      git-cola --repo
+    desktop: share/applications/git-cola-folder-handler.desktop
+    plugs:
+    - desktop
+    - desktop-legacy
+    - unity7
+    - wayland
+    - x11
+
+    - home
+    - removable-media # Non-autoconnect
+
+    # SSH remote support
+    - ssh-keys # Non-autoconnect
+
+    # For signing commits and tags
+    - gpg-keys # Non-autoconnect
+
+    # Network access for remote operations
+    - network
+    - network-observe # Non-autoconnect
+
+    # Unknown (but suggested in runtime)
+    - mount-observe # Non-autoconnect
+    - network-manager # Non-autoconnect
+    - opengl
