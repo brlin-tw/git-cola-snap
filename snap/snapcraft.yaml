@@ -286,36 +286,39 @@ parts:
 
 apps:
   git-cola:
-    command: >
-      desktop-launch
-      perl-launch
-      tcltk-launch
-      ssh-agent-launch
-      git-launch
-      git-cola-launch
-      git cola
+    adapter: full
+    command: bin/git-cola
+    command-chain:
+    - bin/desktop-launch
+    - bin/perl-launch
+    - bin/tcltk-launch
+    - bin/ssh-agent-launch
+    - bin/git-launch
+    - bin/git-cola-launch
     desktop: share/applications/git-cola.desktop
 
   git-dag:
-    command: >
-      desktop-launch
-      perl-launch
-      tcltk-launch
-      ssh-agent-launch
-      git-launch
-      git-cola-launch
-      git dag
+    adapter: full
+    command: bin/git-dag
+    command-chain:
+    - bin/desktop-launch
+    - bin/perl-launch
+    - bin/tcltk-launch
+    - bin/ssh-agent-launch
+    - bin/git-launch
+    - bin/git-cola-launch
     desktop: share/applications/git-dag.desktop
 
   git-cola-folder-handler:
-    command: >
-      desktop-launch
-      perl-launch
-      tcltk-launch
-      ssh-agent-launch
-      git-launch
-      git-cola-launch
-      git-cola --repo
+    adapter: full
+    command: bin/git-cola --repo
+    command-chain:
+    - bin/desktop-launch
+    - bin/perl-launch
+    - bin/tcltk-launch
+    - bin/ssh-agent-launch
+    - bin/git-launch
+    - bin/git-cola-launch
     desktop: share/applications/git-cola-folder-handler.desktop
 
 # Refer the following documentation for asserting interface plugs and slots in a security confined snap:
