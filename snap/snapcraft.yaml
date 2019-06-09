@@ -1,30 +1,6 @@
 %YAML 1.1
 ---
 name: git-cola
-version: 'replaced-by-version-script'
-version-script: |
-  set -eu
-
-  upstream_version="$(
-    git \
-      -C ../parts/git-cola/src \
-      describe \
-      --always \
-      --dirty=-d \
-      --tags \
-    | sed s/^v//
-  )"
-
-  packaging_revision="$(
-    git -C "${SNAPCRAFT_PROJECT_DIR}" \
-      describe \
-      --abbrev=4 \
-      --always \
-      --dirty=-d
-  )"
-
-  printf -- '%s' "${upstream_version}+pkg-${packaging_revision}"
-
 summary: The highly caffeinated Git GUI
 description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
@@ -64,6 +40,7 @@ description: |
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
 
+adopt-info: git-cola
 base: core
 confinement: strict
 grade: stable
@@ -276,9 +253,19 @@ parts:
     - fcitx-frontend-qt5
     #- qt5-gtk-platformtheme
 
+  # Check out the tagged release revision if it isn't promoted to the stable channel
+  # https://forum.snapcraft.io/t/selective-checkout-check-out-the-tagged-release-revision-if-it-isnt-promoted-to-the-stable-channel/10617
+  selective-checkout:
+    plugin: nil
+    stage-snaps:
+    - selective-checkout
+    prime:
+    - -*
+
   git-cola:
     after:
     - patching
+    - selective-checkout
 
     build-packages:
     - gettext
@@ -319,11 +306,14 @@ parts:
     # For `ssh-agent`
     - openssh-client
 
-    source: git://github.com/git-cola/git-cola.git
+    source: https://github.com/git-cola/git-cola.git
     source-depth: 200
+    override-pull: |
+      set -o nounset
 
-    # For stable channel release
-    source-tag: v3.3
+      snapcraftctl pull
+      "${SNAPCRAFT_STAGE}"/scriptlets/selective-checkout \
+        --append-packaging-revision
 
     plugin: make
     make-parameters:
