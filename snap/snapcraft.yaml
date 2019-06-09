@@ -219,7 +219,6 @@ parts:
     - prefix=/snap/git-cola/current
     - PYTHON=python3
     - install-doc
-    - USE_ENV_PYTHON=1
     organize:
       snap/git-cola/current/: /
     filesets:
@@ -251,6 +250,13 @@ parts:
         --in-place \
         "${SNAPCRAFT_STAGE}"/share/applications/*.desktop
 
+      # Patch executable shebangs
+      # https://github.com/git-cola/git-cola/issues/850
+      sed \
+        --file "${SNAPCRAFT_STAGE}"/patching/patch-git-cola-shebang.sed \
+        --in-place \
+        "${SNAPCRAFT_STAGE}"/bin/git-cola \
+        "${SNAPCRAFT_STAGE}"/bin/git-dag
     override-prime: |
       set -eu
 
