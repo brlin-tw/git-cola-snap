@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# This launcher setups environemnt required by Perl in snapped apps.
+# 林博仁 © 2018
+
+set \
+	-o errexit \
+	-o errtrace \
+	-o nounset \
+	-o pipefail
+
+shopt \
+	-s nullglob
+
+paths_string_insert(){
+	if test $# -ne 2; then
+		printf -- \
+			'%s: FATAL: Arugment quantity mismatch.\n' \
+			"${FUNCNAME[0]}" \
+			1>&2
+		exit 1
+	fi
+
+	local -n paths_string="${1}"; shift
+	local insertion="${1}"
+
+	if test -z "${paths_string}"; then
+		paths_string="${insertion}"
+	else
+		paths_string="${paths_string}:${insertion}"
+	fi
+}
+
+init(){
+	case "${SNAP_ARCH}" in
+		amd64)
+			arch_triplet=x86_64-linux-gnu
+		;;
+		armhf)
+			arch_triplet=arm-linux-gnueabihf
+		;;
+		arm64)
+			arch_triplet=aarch64-linux-gnu
+		;;
+		*)
+			arch_triplet="${SNAP_ARCH}"-linux-gnu
+		;;
+	esac
+
+	declare PERLLIB=
+	# FIXME: Drop /etc and /usr/local paths if unnecessary
+	for perl_path in \
+		"${SNAP}"/usr/lib/"${arch_triplet}"/perl/* \
+		"${SNAP}"/usr/lib/"${arch_triplet}"/perl5/* \
+		"${SNAP}"/usr/lib/"${arch_triplet}"/perl-base/* \
+		"${SNAP}"/usr/share/perl/* \
+		"${SNAP}"/usr/share/perl5 \
+		"${SNAP}"/etc/perl \
+		"${SNAP}"/usr/local/lib/"${arch_triplet}"/perl/* \
+		"${SNAP}"/usr/local/share/perl/* \
+		"${SNAP}"/usr/local/lib/site_perl; do
+		# When `nullglob` is enabled filename matching returns null string when no files are matched
+		if test -n "${perl_path}"; then
+			test -v SNAPCRAFT_DEBUG \
+				&& printf -- \
+					'perl-launch: DEBUG: Adding %s to PERLLIB.\n' \
+					"${perl_path}" \
+					1>&2
+			paths_string_insert \
+				PERLLIB \
+				"${perl_path}"
+		fi
+	done
+	export PERLLIB
+
+	exec "${@}"
+}
+
+init "${@}"

@@ -7,7 +7,7 @@ version-script: |
 
   upstream_version="$(
     git \
-      -C parts/git-cola/src \
+      -C ../parts/git-cola/src \
       describe \
       --always \
       --dirty=-d \
@@ -16,7 +16,7 @@ version-script: |
   )"
 
   packaging_revision="$(
-    git \
+    git -C "${SNAPCRAFT_PROJECT_DIR}" \
       describe \
       --abbrev=4 \
       --always \
@@ -64,11 +64,11 @@ description: |
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
 
+base: core
 confinement: strict
 grade: stable
 icon: snap/gui/icon.png
-passthrough:
-  license: GPL-2.0+
+license: GPL-2.0+
 
 apps:
   # NOTE: Sync `command` prefix and `plugs` for each app.
@@ -175,51 +175,32 @@ apps:
     - network-manager # Non-autoconnect
     - opengl
 parts:
-  # Patches to fix other parts
-  patches:
-    source: snap/patches
-    source-type: local
+  # Files to patch the files in the snap
+  patching:
+    source: snap/local/patching
     plugin: dump
+    organize:
+      '*': patching/
+    prime:
+    - -*
 
-    # DISABLED: Bug #1775582 “`organize:{ /: another-dir/ }` causes the items under host root directory to be copied in another-dir” : Bugs : Snapcraft
-    # https://forum.snapcraft.io/t/organize-another-dir-causes-the-items-under-host-root-directory-to-be-copied-in-another-dir/5806
-    #organize:
-        #/: patches/
-    override-build: |
-      set -eu
-
-      snapcraftctl build
-
-      mkdir \
-        --parents \
-        "$SNAPCRAFT_PART_INSTALL"/patches
-      mv \
-        "$SNAPCRAFT_PART_INSTALL"/*.diff \
-        "$SNAPCRAFT_PART_INSTALL"/*.patch \
-        "$SNAPCRAFT_PART_INSTALL"/*.sed \
-        "$SNAPCRAFT_PART_INSTALL"/patches \
-        || true # Empty patches folder is allowed
-    stage:
-    - patches/*
-    override-prime: 'true'
-
-  # Launchers to fix runtime environments
+  # Launcher programs to fix problems at runtime
   launchers:
-    source: snap/launchers
-    source-type: local
+    source: snap/local/launchers
     plugin: dump
+    organize:
+      '*': bin/
+    stage:
+    - -bin/README.*
 
-    override-build: |
-      set -eu
-
-      mkdir \
-        --parents \
-        "$SNAPCRAFT_PART_INSTALL"/bin
-      cp \
-        --force \
-        --verbose \
-        *-launch \
-        "$SNAPCRAFT_PART_INSTALL"/bin
+  # Programs to modify the behavior of each step of the snapcraft lifecycles
+  scriptlets:
+    source: snap/local/scriptlets
+    plugin: dump
+    organize:
+      '*': scriptlets/
+    prime:
+    - -*
 
   # Ubuntu 16.04 doesn't have python-send2trash
   send2trash:
@@ -229,28 +210,10 @@ parts:
     - send2trash
     python-version: python3
 
-  # Programs to help build other parts
-  utilities:
-    source: snap/utilities
-    override-pull: |
-      set -eu
-
-      snapcraftctl pull
-
-      mkdir \
-        --parents \
-        utilities
-      mv \
-        *.bash \
-        utilities
-
-    plugin: dump
-    override-prime: 'true'
-
   # OPTIONAL: Git Large File System
   git-lfs:
     after:
-    - utilities
+    - scriptlets
 
     plugin: nil
     build-packages:
@@ -260,7 +223,7 @@ parts:
     override-build: |
       set -eu
 
-      "${SNAPCRAFT_STAGE}"/utilities/snapcraft-install-latest-git-lfs-release.bash
+      "${SNAPCRAFT_STAGE}"/scriptlets/snapcraft-install-latest-git-lfs-release.bash
 
   diff-merge-tool:
     plugin: nil
@@ -290,10 +253,32 @@ parts:
 
     override-pull: 'true'
 
+  # Remote part for support of various desktop technologies
+  # Refer: https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml
+  desktop-qt5:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-depth: 1
+    source-subdir: qt
+    plugin: make
+    make-parameters: ["FLAVOR=qt5"]
+    build-packages:
+    - dpkg-dev
+    stage-packages:
+    - libxkbcommon0
+    - ttf-ubuntu-font-family
+    - shared-mime-info
+    - libqt5gui5
+    - libgdk-pixbuf2.0-0
+    - libqt5svg5 # for loading icon themes which are svg
+    - try: [appmenu-qt5] # not available on core18
+    - locales-all
+    - xdg-user-dirs
+    - fcitx-frontend-qt5
+    #- qt5-gtk-platformtheme
+
   git-cola:
     after:
-    - desktop-qt5
-    - patches
+    - patching
 
     build-packages:
     - gettext
@@ -338,12 +323,13 @@ parts:
     source-depth: 200
 
     # For stable channel release
-    #source-tag: v3.2
+    source-tag: v3.3
 
     plugin: make
     make-parameters:
     - DESTDIR=$SNAPCRAFT_PART_INSTALL
     - prefix=/snap/git-cola/current
+    - PYTHON=python3
     - install-doc
     organize:
       snap/git-cola/current/: /
@@ -372,14 +358,14 @@ parts:
 
       # Patch desktop entries
       sed \
-        --file "${SNAPCRAFT_STAGE}"/patches/patch-desktop-entries.sed \
+        --file "${SNAPCRAFT_STAGE}"/patching/patch-desktop-entries.sed \
         --in-place \
         "${SNAPCRAFT_STAGE}"/share/applications/*.desktop
 
       # Patch executable shebangs
       # https://github.com/git-cola/git-cola/issues/850
       sed \
-        --file "${SNAPCRAFT_STAGE}"/patches/patch-git-cola-shebang.sed \
+        --file "${SNAPCRAFT_STAGE}"/patching/patch-git-cola-shebang.sed \
         --in-place \
         "${SNAPCRAFT_STAGE}"/bin/git-cola \
         "${SNAPCRAFT_STAGE}"/bin/git-dag

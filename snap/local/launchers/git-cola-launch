@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Launcher to ship Snappy-specific configurations
-# 林博仁 © 2018
+# This is the maintainence launcher for the snap, make necessary runtime
+# environment changes to make the snap work here.  You may also insert
+# security confinement/deprecation/obsoletion notice of the snap here.
+# 林博仁(Buo-ren, Lin) © 2019
 
 set \
 	-o errexit \
