@@ -6,37 +6,7 @@ summary: The highly caffeinated Git GUI
 description: |
   git-cola is a powerful Git GUI with a slick and intuitive user interface.
 
-  INFORMATION REGARDING TO SECURITY CONFINEMENT
-
-  User's global Git configuration is not accessible due to Snapd's current limitations.  You may change the in-snap configuration by editing $HOME/snap/git-cola/current/.gitconfig
-
-  You need to connect the snap to the following core snap's interfaces manually in order to gain access to certain functionalities:
-
-  * gpg-keys: For signing commits and tags
-
-        sudo snap connect git-cola:gpg-keys
-
-  * removable-media: For accessing Git repositories under `/media/*` and `/run/media/*`
-
-        sudo snap connect git-cola:removable-media
-
-  * ssh-keys: For remote operation via SSH protocol
-
-        sudo snap connect git-cola:ssh-keys
-
-  BUILD CONFIGURATION
-
-  For `stable` channel the formal release of Git Cola is used, latest development snapshots are periodically published to the `edge` channel
-
-  Information of other Git Cola's dependencies:
-
-  * Blame Viewer: git-gui
-  * Diff Tool: Kdiff3
-  * Git: From Ubuntu 16.04 software archive
-  * Git Annex: From Ubuntu 16.04 software archive
-  * Git Large File system: Latest upstream release(only shipped in i386/amd64)
-  * History Browser: gitk
-  * Merge Tool: Kdiff3
+  **Snap-specific information**
 
   THIS IS NOT AN OFFICIAL DISTRIBUTION, FOR ANY ISSUE ENCOUNTERED DURING USING THIS SOFTWARE REFER TO:
   https://github.com/Lin-Buo-Ren/git-cola-snap/issues
@@ -46,7 +16,7 @@ license: GPL-2.0+
 
 adopt-info: git-cola
 base: core
-confinement: strict
+confinement: classic
 grade: stable
 
 parts:
@@ -69,13 +39,13 @@ parts:
     - -bin/README.*
 
   # Programs to modify the behavior of each step of the snapcraft lifecycles
-  scriptlets:
-    source: snap/local/scriptlets
-    plugin: dump
-    organize:
-      '*': scriptlets/
-    prime:
-    - -*
+  #scriptlets:
+    #source: snap/local/scriptlets
+    #plugin: dump
+    #organize:
+      #'*': scriptlets/
+    #prime:
+    #- -*
 
   # Ubuntu 16.04 doesn't have python-send2trash
   send2trash:
@@ -84,49 +54,6 @@ parts:
     python-packages:
     - send2trash
     python-version: python3
-
-  # OPTIONAL: Git Large File System
-  git-lfs:
-    after:
-    - scriptlets
-
-    plugin: nil
-    build-packages:
-    - wget
-
-    override-pull: 'true'
-    override-build: |
-      set -eu
-
-      "${SNAPCRAFT_STAGE}"/scriptlets/snapcraft-install-latest-git-lfs-release.bash
-
-  diff-merge-tool:
-    plugin: nil
-    stage-packages:
-    - kdiff3-qt
-
-    override-pull: 'true'
-
-  blame-viewer:
-    plugin: nil
-    stage-packages:
-    - git-gui
-
-    override-pull: 'true'
-
-  git-annex:
-    plugin: nil
-    stage-packages:
-    - git-annex
-
-    override-pull: 'true'
-
-  history-browser:
-    plugin: nil
-    stage-packages:
-    - gitk
-
-    override-pull: 'true'
 
   # Remote part for support of various desktop technologies
   # Refer: https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml
@@ -165,20 +92,10 @@ parts:
     stage-snaps:
     - debian-multiarch-triplet-provider-launch
 
-  perl-launch:
+  classic-launch:
     plugin: nil
     stage-snaps:
-    - perl-launch
-
-  tcltk-launch:
-    plugin: nil
-    stage-snaps:
-    - tcltk-launch
-
-  git-launch:
-    plugin: nil
-    stage-snaps:
-    - git-launch
+    - classic-launch
 
   git-cola:
     after:
@@ -199,18 +116,6 @@ parts:
     - python3-pyqt5
     - python3-sphinx
     stage-packages:
-    # `git stash` requires git-sh-i18n requires gettext.sh in PATH
-    - gettext-base
-
-    - git-core
-    - libdb5.3
-
-    # Required by ssh-askpass
-    - libtcl8.6
-
-    # Required by ssh-askpass(command: wish)
-    - tk
-
     # REPLACED: By Python 3 counterparts
     #- python
     #- python-pyqt5
@@ -220,9 +125,6 @@ parts:
 
     # REPLACED: by send2trash part
     #- python3-send2trash
-
-    # For `ssh-agent`
-    - openssh-client
 
     source: https://github.com/git-cola/git-cola.git
     source-depth: 200
@@ -310,11 +212,8 @@ apps:
     command: bin/git-cola
     command-chain: &command-chain-common
     - bin/debian-multiarch-triplet-provider-launch
+    - bin/classic-launch
     - bin/desktop-launch
-    - bin/perl-launch
-    - bin/tcltk-launch
-    - bin/ssh-agent-launch
-    - bin/git-launch
     - bin/git-cola-launch
     desktop: share/applications/git-cola.desktop
 
@@ -329,58 +228,3 @@ apps:
     command: bin/git-cola --repo
     command-chain: *command-chain-common
     desktop: share/applications/git-cola-folder-handler.desktop
-
-# Refer the following documentation for asserting interface plugs and slots in a security confined snap:
-# Interface management - doc - snapcraft.io
-# https://docs.snapcraft.io/interface-management/6154
-# Supported interfaces - doc - snapcraft.io
-# https://docs.snapcraft.io/supported-interfaces/7744
-# Non-A/C: Non-autoconnect interface
-plugs:
-  # Application-specific files access
-  # The auto-connection requires store grant
-  # https://forum.snapcraft.io/t/the-personal-files-interface/9357
-  # https://forum.snapcraft.io/t/the-system-files-interface/9358
-  #config-git-cola:
-    #interface: personal-files
-    #read:
-    #- $HOME/.config/git-cola
-
-  # Common desktop interfaces
-  # https://forum.snapcraft.io/t/the-desktop-interfaces/2042
-  desktop:
-  desktop-legacy:
-  unity7:
-  wayland:
-
-  # Gtk Common Themes support
-  # https://forum.snapcraft.io/t/how-to-use-the-system-gtk-theme-via-the-gtk-common-themes-snap/6235
-  gsettings:
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-
-  # For signing commits and tags
-  gpg-keys: # Non-autoconnect
-
-  # Regular files access
-  home:
-  removable-media: # Non-A/C
-
-  # Make Qt happy
-  opengl:
-
-  # SSH remote support
-  ssh-keys: # Non-autoconnect
-
-  # Network access
-  network:

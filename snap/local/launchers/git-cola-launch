@@ -11,27 +11,6 @@ set \
     -o pipefail
 
 init(){
-    # Use host GUI editor
-    git config \
-        --global \
-        gui.editor \
-        xdg-open
-
-    # We ship Kdiff3
-    git config \
-        --global \
-        diff.tool \
-        kdiff3
-    git config \
-        --global \
-        merge.tool \
-        kdiff3
-
-    # Remember passwords for 1 hour
-    git config \
-        --global \
-        credential.helper \
-        'cache --timeout 3600'
 
     exec "${@}"
 }
