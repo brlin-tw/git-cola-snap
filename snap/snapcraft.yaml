@@ -288,7 +288,7 @@ apps:
   git-cola:
     adapter: full
     command: bin/git-cola
-    command-chain:
+    command-chain: &command-chain-common
     - bin/desktop-launch
     - bin/perl-launch
     - bin/tcltk-launch
@@ -300,25 +300,13 @@ apps:
   git-dag:
     adapter: full
     command: bin/git-dag
-    command-chain:
-    - bin/desktop-launch
-    - bin/perl-launch
-    - bin/tcltk-launch
-    - bin/ssh-agent-launch
-    - bin/git-launch
-    - bin/git-cola-launch
+    command-chain: *command-chain-common
     desktop: share/applications/git-dag.desktop
 
   git-cola-folder-handler:
     adapter: full
     command: bin/git-cola --repo
-    command-chain:
-    - bin/desktop-launch
-    - bin/perl-launch
-    - bin/tcltk-launch
-    - bin/ssh-agent-launch
-    - bin/git-launch
-    - bin/git-cola-launch
+    command-chain: *command-chain-common
     desktop: share/applications/git-cola-folder-handler.desktop
 
 # Refer the following documentation for asserting interface plugs and slots in a security confined snap:
