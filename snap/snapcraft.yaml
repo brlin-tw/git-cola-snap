@@ -160,6 +160,26 @@ parts:
     prime:
     - -*
 
+  debian-multiarch-triplet-provider-launch:
+    plugin: nil
+    stage-snaps:
+    - debian-multiarch-triplet-provider-launch
+
+  perl-launch:
+    plugin: nil
+    stage-snaps:
+    - perl-launch
+
+  tcltk-launch:
+    plugin: nil
+    stage-snaps:
+    - tcltk-launch
+
+  git-launch:
+    plugin: nil
+    stage-snaps:
+    - git-launch
+
   git-cola:
     after:
     - patching
@@ -289,6 +309,7 @@ apps:
     adapter: full
     command: bin/git-cola
     command-chain: &command-chain-common
+    - bin/debian-multiarch-triplet-provider-launch
     - bin/desktop-launch
     - bin/perl-launch
     - bin/tcltk-launch
