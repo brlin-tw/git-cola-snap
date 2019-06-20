@@ -180,10 +180,22 @@ parts:
     stage-snaps:
     - git-launch
 
+  qarma:
+    source: https://github.com/luebking/qarma.git
+    source-depth: 1
+    plugin: qmake
+    build-packages:
+    - g++
+    - libqt5x11extras5-dev
+    - qtbase5-dev
+    stage-packages:
+    - libqt5core5a
+    - libqt5x11extras5
+
   git-cola:
     after:
-    - patching
-    - selective-checkout
+      - patching
+      - selective-checkout
 
     build-packages:
     - gettext
