@@ -162,7 +162,7 @@ parts:
       - share/locale/*
 
     override-stage: |
-      set -eu
+      set -o nounset
 
       snapcraftctl stage
 
@@ -180,7 +180,7 @@ parts:
         "${SNAPCRAFT_STAGE}"/bin/git-cola \
         "${SNAPCRAFT_STAGE}"/bin/git-dag
     override-prime: |
-      set -eu
+      set -o nounset
 
       snapcraftctl prime
 
